@@ -18,6 +18,7 @@ export type ContextType = {
     resultData: string;
     setResultData: Dispatch<SetStateAction<string>>;
     onSent: (prompt: any) => Promise<void>;
+    newChat:() => void;
   };
 
 const ContextProvider = (props: any) => {
@@ -34,7 +35,10 @@ const ContextProvider = (props: any) => {
         },75*index)
     }
 
-    
+    const newChat = ()=> {
+        setLoading(false)
+        setShowResult(false)
+    }
 
     const onSent = async (prompt:any) => {
         setResultData("")
@@ -86,7 +90,8 @@ const ContextProvider = (props: any) => {
         setLoading,
         resultData,
         setResultData,
-        onSent
+        onSent,
+        newChat
     }
 
     return (

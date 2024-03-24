@@ -7,7 +7,7 @@ type Props = {};
 
 const Sidebar = (props: Props) => {
   const [extended, setExtended] = useState(false);
-  const{onSent,prevPrompt,setRecentPrompt} = useContext(Context);
+  const{onSent,prevPrompt,setRecentPrompt,newChat} = useContext(Context);
 
   const loadPrompt = async(prompt:any) => {
     setRecentPrompt(prompt);
@@ -24,7 +24,7 @@ const Sidebar = (props: Props) => {
           width={24}
           height={24}
         />
-        <div className="new-chat">
+        <div onClick={()=>newChat()} className="new-chat">
           <Image
             className="new-chat-icon"
             src={"/images/plus_icon.png"}
