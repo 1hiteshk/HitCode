@@ -17,7 +17,7 @@ export type ContextType = {
     setLoading: Dispatch<SetStateAction<boolean>>;
     resultData: string;
     setResultData: Dispatch<SetStateAction<string>>;
-    onSent: (prompt: any) => Promise<void>;
+    onSent: (prompt?: any) => Promise<void>;
     newChat:() => void;
   };
 

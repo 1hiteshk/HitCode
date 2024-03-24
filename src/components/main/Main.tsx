@@ -27,12 +27,12 @@ const Main = (props: Props) => {
   return (
     <div className="main">
       <div className="nav">
-        <p>Gemini</p>
+        <p className="font-bold">Hit Code</p>
         <Image
           className="user-image"
-          src={"/images/user_icon.png"}
-          height={30}
-          width={30}
+          src={"/images/shi.jpg"}
+          height={50}
+          width={50}
           alt="user"
         />
       </div>
@@ -41,9 +41,9 @@ const Main = (props: Props) => {
         <>
  <div className="greet">
           <p>
-            <span>Hello, Desktop.</span>
+            <span className="">Hello, Desktop.</span>
           </p>
-          <p>How can I assist you today ?</p>
+          <p className="leading-tight">How can I assist you today ?</p>
         </div>
         <div className="cards">
           <Card
@@ -109,18 +109,18 @@ const Main = (props: Props) => {
                 height={24}
                 width={24}
               />
-              <Image
+             {input? <Image
                 onClick={() => onSent()}
                 src={"/images/send_icon.png"}
                 alt="icon"
                 height={24}
                 width={24}
-              />
+              />:null}
             </div>
           </div>
           <p className="bottom-info">
             This may display inaccurate info, including about people, so
-            double-check its responses.
+            double-check its responses.It's just an AI model.
           </p>
         </div>
       </div>
