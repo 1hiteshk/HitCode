@@ -66,8 +66,8 @@ const Main = (props: Props) => {
         </> : <>
         <div className="result">
             <div className="result-title">
-                <Image alt="user" src={'/images/user_icon.png'} width={24} height={24} 
-                 style={{ width: "auto", height: "auto" }} // Maintain aspect ratio
+                <Image alt="user ra-one" src={'/images/raone.jpg'} width={30} height={30} 
+                 style={{ width: "30px", height: "30px" }} // Maintain aspect ratio
                  />
                 <p>{recentPrompt}</p>
             </div>
