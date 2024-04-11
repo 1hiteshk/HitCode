@@ -24,6 +24,19 @@ const Main = (props: Props) => {
     onSent,
   }: ContextType = useContext(Context);
 
+  const handleCopyClick = () => {
+    const textToCopy = (document.querySelector('.result-data .text') as HTMLElement)?.innerText;
+    if (textToCopy) {
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+          console.log('Text copied to clipboard');
+        })
+        .catch((error) => {
+          console.error('Error copying text: ', error);
+        });
+    }
+  };
+
   return (
     <div className="main">
       <div className="nav">
@@ -69,8 +82,12 @@ const Main = (props: Props) => {
                 <Image alt="user ra-one" src={'/images/raone.jpg'} width={30} height={30} 
                  style={{ width: "30px", height: "30px" }} // Maintain aspect ratio
                  />
-                <p>{recentPrompt}</p>
+               <p>{recentPrompt}</p>
+               <div title="Click to copy" className="flex items-center cursor-pointer justify-end w-9" onClick={handleCopyClick}>
+            <img  src="https://cdn-icons-png.freepik.com/256/54/54702.png" alt="copy-icon"  style={{ width: "30px", height: "30px" }}/>
             </div>
+            </div>
+            
             <div className="result-data">
                 <Image src={'/images/gemini_icon.png'} alt="" width={30} height={30} 
                  style={{ width: "auto", height: "auto" }} // Maintain aspect ratio
@@ -81,7 +98,7 @@ const Main = (props: Props) => {
                   <hr/>
                   <hr/>
                  </div>:<>
-                 <p dangerouslySetInnerHTML={{__html:resultData}}></p></>}
+                 <p className="text" dangerouslySetInnerHTML={{__html:resultData}}></p></>}
                 
             </div>
         </div>
@@ -95,6 +112,11 @@ const Main = (props: Props) => {
               value={input}
               type="text"
               placeholder="Enter your search here"
+              onKeyDown={(e)=>{
+                if(e.key === "Enter"){
+                  onSent();
+                }
+              }}
             />
             <div>
               <Image
